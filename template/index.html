@@ -1,0 +1,46 @@
+<html>
+<body>
+<div>
+    <form method="POST" action="/add">
+        <table>
+            <tr>
+                <input name="id" type="hidden" value="{{.PersonEdit.Id}}"/>
+                <td>name</td>
+                <td>
+                    <input type="text" name="name" value="{{.PersonEdit.Name}}"/>
+                </td>
+                <td>Email</td>
+                <td>
+                    <input type="text" name="email" value="{{.PersonEdit.Email}}"/>
+
+                </td>
+                <td>
+                    <input type="submit" value="send"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div>
+    <table>
+        <tr>
+            <td>name</td>
+            <td>Email</td>
+            <td colspan="2"></td>
+        </tr>
+        {{range $element := .Persons}}
+        <tr>
+            <td>{{.Name}}</td>
+            <td>{{.Email}}</td>
+            <td>
+                <a href="/edit?id={{.Id}}">edit</a>
+            </td>
+            <td>
+                <a href="/delete?id={{.Id}}">delete</a>
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</div>
+</body>
+</html>
